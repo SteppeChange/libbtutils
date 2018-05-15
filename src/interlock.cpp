@@ -19,7 +19,13 @@ limitations under the License.
 #ifdef __APPLE__
 
 #include <libkern/OSAtomic.h>
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 OSSpinLock g_interlocked_spin;
+
+#pragma GCC diagnostic pop
 
 #elif !USE_GLIBCXX_ATOMIC_BUILTINS && !defined _WIN32
 

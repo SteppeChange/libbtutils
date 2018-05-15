@@ -57,6 +57,6 @@ private:
 	LONG refcount;
 };
 
-#define REFBASE ULONG STDMETHODCALLTYPE AddRef() { return RefBase::AddRef(); } ULONG STDMETHODCALLTYPE Release() { return RefBase::Release(); }
+#define REFBASE ULONG STDMETHODCALLTYPE AddRef() override { return RefBase::AddRef(); } ULONG STDMETHODCALLTYPE Release() override { return RefBase::Release(); }
 
 #endif//_UTORRENT_REFBASE_H_

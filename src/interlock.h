@@ -59,6 +59,10 @@ inline void *MyInterlockedCompareExchangePointer(void **ptr, void *newvalue, voi
 
 #include <libkern/OSAtomic.h>
 
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 extern OSSpinLock g_interlocked_spin;
 
 inline LONG InterlockedAdd(LONG * ptr, LONG value) {
@@ -100,6 +104,8 @@ inline void *InterlockedCompareExchangePointer(void **ptr, void *newvalue, void 
 	OSSpinLockUnlock(&g_interlocked_spin);
 	return old;
 }
+
+#pragma GCC diagnostic pop
 
 #elif defined __GNUC__ || defined POSIX
 
