@@ -27,7 +27,7 @@ limitations under the License.
 struct PACKED sha1_hash {
 	byte value[SHA1_DIGESTSIZE];
 
-	sha1_hash() {}
+	sha1_hash() { memset(value, 0, sizeof(value)); }
 	sha1_hash(const byte* b) { memcpy(value, b, 20); }
 
 	sha1_hash & operator=(const sha1_hash & hash)
